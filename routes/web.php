@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormController;
 
 // Home Page
 Route::get('/', function () {
@@ -17,6 +18,8 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/user', function () {
-    return "user pages";
-});
+// Hiển thị form
+Route::get('/user', [FormController::class, 'showForm']);
+
+// Xử lý dữ liệu từ form
+Route::post('/submit-form', [FormController::class, 'handleForm'])->name('submit.form');
