@@ -12,14 +12,16 @@ class FormController extends Controller
         return view('user');
     }
 
-    // Xử lý dữ liệu từ form
     public function handleForm(Request $request)
     {
-        // Lấy dữ liệu từ form
         $name = $request->input('name');
         $email = $request->input('email');
+        $message = $request->input('message');
 
-        // Hiển thị dữ liệu (hoặc xử lý tiếp)
-        return "Tên: $name, Email: $email";
+        return view('feedbackOfUser', [
+            'name' => $name,
+            'email' => $email,
+            'message' => $message
+        ]);
     }
 }
