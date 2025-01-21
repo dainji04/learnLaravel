@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FeedbackController;
 
+use App\Models\User;
+
 // Home Page
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 // About Page
 Route::get('/about', function () {
@@ -29,3 +31,8 @@ Route::get('/user', [FormController::class, 'showForm']);
 
 // Xử lý dữ liệu từ form
 Route::post('/submit-form', [FormController::class, 'handleForm'])->name('submit.form');
+
+
+Route::get('/users/{user}', function (User $user) {
+    return $user->email;
+});

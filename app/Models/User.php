@@ -17,6 +17,12 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
     protected $fillable = [
         'name',
         'email',
