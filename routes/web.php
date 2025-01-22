@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\Usercontroller;
 
 use App\Models\User;
 
@@ -36,3 +37,5 @@ Route::post('/submit-form', [FormController::class, 'handleForm'])->name('submit
 Route::get('/users/{user}', function (User $user) {
     return $user->email;
 });
+
+Route::get('/users', UserController::class);
