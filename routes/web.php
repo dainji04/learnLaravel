@@ -5,6 +5,8 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Usercontroller;
 
+use App\Http\Middleware\EnsureTokenIsValid;
+
 use App\Models\User;
 
 // Home Page
@@ -38,4 +40,4 @@ Route::get('/users/{user}', function (User $user) {
     return $user->email;
 });
 
-Route::get('/users', UserController::class);
+Route::get('/users', UserController::class)->middleware(EnsureTokenIsValid::class);
