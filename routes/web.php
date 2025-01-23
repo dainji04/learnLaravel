@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FeedbackController;
@@ -37,7 +38,12 @@ Route::post('/submit-form', [FormController::class, 'handleForm'])->name('submit
 
 
 Route::get('/users/{user}', function (User $user) {
-    return $user->email;
+    return $user->email; // it should be run if application have a database in user model
 });
 
 Route::get('/users', UserController::class)->middleware(EnsureTokenIsValid::class);
+
+//Route::resource('photos', PhotoController::class);
+//
+Route::resource('showPhoto', photoController::class)->only(['show']);
+//Route::resource('showPhoto', photoController::class)->except(['show']);
